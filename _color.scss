@@ -1,0 +1,85 @@
+$base-color:#00A4FF;
+
+@function shades($color, $change: n) {
+  @if $change == n {
+    @return $color;
+  }
+  @if $change == l1 {
+    @return tint($color, 10%);
+  }
+  @if $change == l2 {
+    @return tint($color, 25%);
+  }
+  @if $change == l3 {
+    @return tint($color, 50%);
+  }
+  @if $change == l4 {
+    @return tint($color, 75%);
+  }
+  @if $change == d1 {
+    @return shade($color, 10%);
+  }
+  @if $change == d2 {
+    @return shade($color, 25%);
+  }
+  @if $change == d3 {
+    @return shade($color, 50%);
+  }
+  @if $change == d4 {
+    @return shade($color, 75%);
+  }
+}
+
+@function complementary($color, $change: n) {
+  @if $change == n {
+    @return complement($color);
+  }
+  @if $change == c { 
+    @return complement($color);
+  }
+  @if $change == dc {  
+    @return hsl(hue(complement($color)),saturation($color),70);
+  }
+  @if $change == lb {
+     @return hsl(hue($color),saturation($color),70);
+  }
+  @if $change == db {
+    @return hsl(hue($color),saturation($color),30)
+  }
+}
+
+@function triad($color, $change: n) {
+  @if $change == n {
+    @return $color;
+  }
+  @if $change == t1 { 
+    @return adjust-hue($color, 120deg);
+  }
+  @if $change == t2 {  
+    @return adjust-hue($color, 240deg);
+  }
+}
+
+@function analogous($color, $change: n) {
+  @if $change == n {
+    @return $color;
+  }
+  @if $change == a1 { 
+    @return adjust-hue($color, 45deg);
+  }
+  @if $change == a2 {  
+    @return adjust-hue($color, -45deg);
+  }
+}
+
+@function split($color, $change: n) {
+  @if $change == n {
+    @return $color;
+  }
+  @if $change == s1 { 
+    @return adjust-hue($color, 150deg);
+  }
+  @if $change == s2 {  
+    @return adjust-hue($color, 210deg);
+  }
+}
